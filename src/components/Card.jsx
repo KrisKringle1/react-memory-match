@@ -7,24 +7,21 @@ const Card = () => {
   const cards = []
 
   function clickCard(e) {
-    setIsClicked(!isClicked)
-    console.log(e.target.className)
-    if (isClicked) {
-      e.target.className = "hidden"
-
+    if (e.currentTarget.lastElementChild.className === 'outerCard not-hidden') {
+      e.currentTarget.lastElementChild.className = 'outerCard hidden'
     }
 
-    if (!isClicked) {
-      e.target.className = "outerCard"
-    }
+    console.log(e.currentTarget.lastElementChild.className)
+
   }
 
   for (let i = 0; i < cardNumber.length; i++) {
 
     cards.push(
-      <div key={i} className="cardContainer" onClick={clickCard}>{cardNumber[i]}
-        <div className="outerCard">
+      <div key={i} className="cardContainer" onClick={clickCard}>
+        <div className="outerCard not-hidden" >
           <div className="innerCard">
+            {cardNumber[i]}
           </div>
         </div>
       </div>
